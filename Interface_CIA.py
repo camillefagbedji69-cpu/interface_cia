@@ -12,7 +12,7 @@ st.set_page_config(
 # ===== CHARGEMENT DONNÉES =====
 @st.cache_data(ttl=60)
 def load_data():
-    return pd.read_csv("Notes.csv")
+    return pd.read_csv("Notes.csv", sep = ";")
 
 notes = load_data()
 
