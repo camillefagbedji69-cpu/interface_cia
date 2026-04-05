@@ -50,10 +50,10 @@ if user_text:
                 Progression : {total/max_total*100:.1f} % \n
                 Moyenne classe : {moyenne:.1f} pts \n
                 Percentile : {percentile:.1f} %"""
-                st.write("Résumé", metrics)
-                st.write("Feedback", feedback)
-                st.write("Distribution des notes", fig)
-                st.write('Top 5', top5)
+        st.write("Résumé", metrics)
+        st.write("Feedback", feedback)
+        st.write("Distribution des notes", fig)
+        st.write('Top 5', top5)
 st.markdown("---")
 
 st.caption("🤖 CIA-FA Dashboard • Développé avec ❤️ par Club IA - Faculté d'Agronomie. \n Dernière mise à jour le 05/04/2026.")
