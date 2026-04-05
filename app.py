@@ -56,8 +56,7 @@ if user_text:
         Moyenne classe : {moyenne:.1f} pts \n
         Percentile : {percentile:.1f} %"""
         
-        st.write("Résumé", metrics) 
-        print(\n)
+        st.write("Résumé", metrics)
         st.write("Feedback", feedback) 
         st.write("Distribution des notes", fig) 
         st.write('Top 5', top5)
