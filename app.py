@@ -49,17 +49,20 @@ if user_text:
         top5_html = top5.to_html(index=True)
         
         metrics = f"""
-        Nom : {nom}
-        Total : {total} pts
-        Classement : {rang}/{len(notes)}
-        Progression : {total/max_total*100:.1f} %
-        Moyenne classe : {moyenne:.1f} pts
+        Nom : {nom} \n
+        Total : {total} pts \n
+        Classement : {rang}/{len(notes)} \n
+        Progression : {total/max_total*100:.1f} % \n
+        Moyenne classe : {moyenne:.1f} pts \n
         Percentile : {percentile:.1f} %"""
         
         st.write("Résumé", metrics) 
+        print(\n)
         st.write("Feedback", feedback) 
         st.write("Distribution des notes", fig) 
         st.write('Top 5', top5)
+else : 
+        print("Erreur ! Veuillez renseignez votre code")
 
 st.markdown("---")
 
