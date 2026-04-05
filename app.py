@@ -2,12 +2,10 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-
-st.title('This is my interface')
 import plotly.express as px
 
 ## titre 
-st.title("📊 Dashboard des indices SPI et SPEI à partir des données climatiques")
+st.title("📊 Dashboard des notes")
 
 ## upload du fichier
 dataset = pd.read_excel('Notes.xlsx')
