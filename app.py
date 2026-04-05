@@ -19,8 +19,9 @@ notes = notes.dropna(subset=['code_etudiant', 'total'])
 
 ## Enter code 
 user_text = st.text_input("Entrez votre code étudiant", placeholder="JOHN2025")
+st.
 
-if user_text != none :
+if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
         nom = etudiant['nom'].values[0]
         total = etudiant['total'].values[0]
