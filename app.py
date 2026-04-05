@@ -21,7 +21,7 @@ notes = notes.dropna(subset=['code_etudiant', 'total'])
 user_text = st.text_input("Entrez votre code étudiant", placeholder="JOHN2025")
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
-        if etudiant != none :
+        if etudiant:
                 nom = etudiant['nom'].values[0]
                 total = etudiant['total'].values[0]
                 rang = (notes['total'] > total).sum() + 1
