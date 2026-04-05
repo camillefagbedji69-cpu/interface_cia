@@ -8,7 +8,7 @@ import plotly.express as px
 st.title("📊 Dashboard des notes")
 
 ## upload du fichier
-dataset = pd.read_excel('Notes.xlsx')
+notes = pd.read_excel('Notes.xlsx')
 
 ## Data cleaning 
 notes.columns = notes.columns.str.strip().str.lower()
