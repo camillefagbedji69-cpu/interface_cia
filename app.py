@@ -4,6 +4,25 @@ import numpy as np
 import streamlit as st
 
 st.title('This is my interface')
+import plotly.express as px
+
+## titre 
+st.title("📊 Dashboard des indices SPI et SPEI à partir des données climatiques")
+
+## upload du fichier
+dataset = pd.read_excel('Notes.xlsx')
+
+## Data cleaning 
+notes.columns = notes.columns.str.strip().str.lower()
+notes['code_etudiant'] = notes['code_etudiant'].str.strip().str.upper()
+notes['nom'] = notes['nom'].str.strip()
+notes['total'] = pd.to_numeric(notes['total'], errors='coerce')
+notes = notes.dropna(subset=['code_etudiant', 'total'])
+
+## Enter code 
+user_text = st.text_input("Entrez votre code étudiant", placeholder="JOHN2025")
+
+st.markdown("---")
 
 st.caption("🤖 CIA-FA Dashboard • Développé avec ❤️ par Club IA - Faculté d'Agronomie. \n Dernière mise à jour le 20/03/2026.")
 
