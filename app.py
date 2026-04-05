@@ -55,7 +55,7 @@ if user_text != none :
         Classement : {rang}/{len(notes)}
         Progression : {total/max_total*100:.1f} %
         Moyenne classe : {moyenne:.1f} pts
-        Percentile : {percentile:.1f} %
+        Percentile : {percentile:.1f} %"""
         
         st.write("Résumé", metrics) 
         st.write("Feedback", feedback) 
