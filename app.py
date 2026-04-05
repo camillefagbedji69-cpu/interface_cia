@@ -60,8 +60,9 @@ if user_text:
         st.write("Feedback", feedback) 
         st.write("Distribution des notes", fig) 
         st.write('Top 5', top5)
-else : 
+else:
         print("Erreur ! Veuillez renseignez votre code")
+
 
 st.markdown("---")
 
