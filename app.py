@@ -14,9 +14,6 @@ notes = pd.read_excel('Notes.xlsx')
 notes.columns = notes.columns.str.strip().str.lower()
 notes['code_etudiant'] = notes['code_etudiant'].str.strip().str.upper()
 notes['Nom'] = notes['nom'].str.strip()
-notes['Exercice'] = pd.to_numeric(notes['Exercice'], errors = 'coerce') 
-notes['Presence'] = pd.to_numeric(notes['Presence'], errors = 'coerce') 
-notes['Note'] = pd.to_numeric(notes['Note'], errors = 'coerce')
 
 ## Enter code 
 with st.sidebar :
