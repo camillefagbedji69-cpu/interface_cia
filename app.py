@@ -64,7 +64,7 @@ if user_text:
         ## Leaderboard table 
         st.subheader("Leaderboard (Top 5)")
         st.write(top5)
-        
+        ## Congratulations message
         if rang == 1:
                 st.balloons()
                 st.success("Félicitations Major ! 🏆")
@@ -73,7 +73,7 @@ if user_text:
         elif rang <= 5:
                 st.info("⭐ Top 5 ! Encore un effort pour le podium ! 🚀")
         else : 
-                ecart = top5.iloc[4]['Total'] - total
+                ecart = top5.iloc[4]['total'] - note
                 st.info(f"À {ecart} pts du Top 5 ! Continue ! 💪")
         
 st.markdown("---")
