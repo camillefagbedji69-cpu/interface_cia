@@ -65,6 +65,17 @@ if user_text:
         st.subheader("Leaderboard (Top 5)")
         st.write(top5)
         
+        if rang == 1:
+                st.balloons()
+                st.success("Félicitations Major ! 🏆")
+        elif rang == 2 or rang == 3: 
+                st.success("🔥 Vous êtes sur le podium ! Bravo champion ! 💪")
+        elif rang <= 5:
+                st.info("⭐ Top 5 ! Encore un effort pour le podium ! 🚀")
+        else : 
+                ecart = top5.iloc[4]['Total'] - total
+                st.info(f"À {ecart} pts du Top 5 ! Continue ! 💪")
+        
 st.markdown("---")
 st.caption("🤖 CIA-FA Dashboard • Développé avec ❤️ par Club IA - Faculté d'Agronomie. \n Dernière mise à jour le 05/04/2026.")
 
