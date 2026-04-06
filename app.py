@@ -8,8 +8,13 @@ import plotly.express as px
 st.title("📊 Club IA - Faculté d'Agronomie")
 st.subheader("Tableau de bord de l'étudiant")
 
-## upload du fichier
-notes = pd.read_excel('Notes.xlsx')
+## upload dataset
+@st.cache_data()  # Le cache expire après 1 heure
+def load_data(dataset):
+    data = pd.read_excel(dataset)
+    return data
+        
+notes = load_data('Notes.xlsx')
 
 ## Data cleaning 
 notes.columns = notes.columns.str.strip().str.lower()
