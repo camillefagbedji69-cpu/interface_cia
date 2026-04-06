@@ -24,7 +24,7 @@ if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
         nom = etudiant['nom'].values[0]
         note = etudiant['total'].values[0]
-        rang = (notes['total'] > total).sum() + 1
+        rang = (notes['total'] > note).sum() + 1
         max_total = notes['total'].max()
         exo = notes['exo']
         contribution_exo = (exo * 100) / note
