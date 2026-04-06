@@ -17,9 +17,9 @@ notes['nom'] = notes['nom'].str.strip()
 notes[["exo", "presence", "total"]] = notes[["exo", "presence", "total"]].apply(pd.to_numeric, errors = "coerce")
 
 ## Enter code 
-st.info("Entrez votre code étudiant dans la barre latérale. Votre code est au format : NOM2025. \n Ex: FAGBEDJI2025 ou FAGBEDJI-AVITIKPAMBA2025 ou FAGBEDJICHABI2025")
+st.info("""Entrez votre code étudiant ci-dessous. Votre code est au format : NOM2025.
+Ex: FAGBEDJI2025 ou FAGBEDJI-AVITIKPAMBA2025 ou FAGBEDJICHABI2025""")
 
-st.header("Connectez vous")
 user_text = st.text_input("Entrez votre code étudiant", placeholder="Ex: JOHN2025")
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
