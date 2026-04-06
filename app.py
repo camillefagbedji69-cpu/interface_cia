@@ -47,7 +47,7 @@ if user_text:
         st.subheader("Distribution des notes")
         st.write(fig)
         st.subheader("Leaderboard (Top 5)")
-        st.write('Top 5', top5)
+        st.write(top5)
         
 st.markdown("---")
 st.caption("🤖 CIA-FA Dashboard • Développé avec ❤️ par Club IA - Faculté d'Agronomie. \n Dernière mise à jour le 05/04/2026.")
