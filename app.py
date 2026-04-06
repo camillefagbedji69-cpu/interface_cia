@@ -17,6 +17,8 @@ notes['nom'] = notes['nom'].str.strip()
 notes[["exo", "presence", "total"]] = notes[["exo", "presence", "total"]].apply(pd.to_numeric, errors = "coerce")
 
 ## Enter code 
+st.info("Entrez votre code étudiant dans la barre latérale. Votre code est au format : NOM2025. Ex: FAGBEDJI2025 ou FAGBEDJI-AVITIKPAMBA2025 ou FAGBEDJICHABI2025")
+
 with st.sidebar :
         st.header("Connectez vous")
         user_text = st.text_input("Entrez votre code étudiant", placeholder="Ex: JOHN2025")
@@ -38,7 +40,7 @@ if user_text:
         top5.index = ['🥇','🥈','🥉','4️⃣','5️⃣']
         top5.columns = ['nom','total']
         top5_html = top5.to_html(index=True)
-        metrics = f"""{nom} vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
+        metrics = f"""{nom}, vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
         Les exercices représentent {float(contribution_exo):.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé : ", metrics)
