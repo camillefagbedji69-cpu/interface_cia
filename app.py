@@ -50,6 +50,18 @@ if user_text:
         col2.metric("Rang", f"{rang}e / {len(notes)}")
         col3.metric("Percentile", f"{percentile:.1f}%")
 
+        ## Congratulations message
+        if rang == 1:
+                st.balloons()
+                st.success("Félicitations Major ! 🏆")
+        elif rang == 2 or rang == 3: 
+                st.success("🔥 Vous êtes sur le podium ! Bravo champion ! 💪")
+        elif rang <= 5:
+                st.info("⭐ Top 5 ! Encore un effort pour le podium ! 🚀")
+        else : 
+                ecart = top5.iloc[4]['total'] - note
+                st.info(f"À {ecart} pts du Top 5 ! Continue ! 💪")
+
         ## Summary for student 
         st.subheader("Résumé")
         metrics = f"""{nom}, vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
@@ -64,17 +76,6 @@ if user_text:
         ## Leaderboard table 
         st.subheader("Leaderboard (Top 5)")
         st.write(top5)
-        ## Congratulations message
-        if rang == 1:
-                st.balloons()
-                st.success("Félicitations Major ! 🏆")
-        elif rang == 2 or rang == 3: 
-                st.success("🔥 Vous êtes sur le podium ! Bravo champion ! 💪")
-        elif rang <= 5:
-                st.info("⭐ Top 5 ! Encore un effort pour le podium ! 🚀")
-        else : 
-                ecart = top5.iloc[4]['total'] - note
-                st.info(f"À {ecart} pts du Top 5 ! Continue ! 💪")
         
 st.markdown("---")
 st.caption("🤖 CIA-FA Dashboard • Développé avec ❤️ par Club IA - Faculté d'Agronomie. \n Dernière mise à jour le 05/04/2026.")
