@@ -26,7 +26,7 @@ if user_text:
         note = etudiant['total'].values[0]
         rang = (notes['total'] > note).sum() + 1
         max_total = notes['total'].max()
-        exo = notes['exo']
+        exo = etudiant['exo'].values[0]
         contribution_exo = (exo * 100) / note
         percentile = (notes['total'] <= note).mean() * 100
         fig = px.histogram(
