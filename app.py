@@ -20,7 +20,7 @@ notes = notes.dropna(subset=['code_etudiant', 'total'])
 ## Enter code 
 with st.sidebar :
         st.header("Connectez vous")
-        user_text = st.text_input("Entrez votre code étudiant", type = "password", placeholder="Ex: JOHN2025")
+        user_text = st.text_input("Entrez votre code étudiant", placeholder="Ex: JOHN2025")
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
         nom = etudiant['nom'].values[0]
