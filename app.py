@@ -19,9 +19,8 @@ notes[["exo", "presence", "total"]] = notes[["exo", "presence", "total"]].apply(
 ## Enter code 
 st.info("Entrez votre code étudiant dans la barre latérale. Votre code est au format : NOM2025. \n Ex: FAGBEDJI2025 ou FAGBEDJI-AVITIKPAMBA2025 ou FAGBEDJICHABI2025")
 
-with st.sidebar :
-        st.header("Connectez vous")
-        user_text = st.text_input("Entrez votre code étudiant", placeholder="Ex: JOHN2025")
+st.header("Connectez vous")
+user_text = st.text_input("Entrez votre code étudiant", placeholder="Ex: JOHN2025")
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
         nom = etudiant['nom'].values[0]
@@ -43,7 +42,8 @@ if user_text:
         metrics = f"""{nom}, vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
         Les exercices représentent {float(contribution_exo):.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
-        st.write("Résumé : ", metrics)
+        st.subheader("Résumé")
+        st.write(metrics)
         st.subheader("Distribution des notes")
         st.write(fig)
         st.subheader("Leaderboard (Top 5)")
