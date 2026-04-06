@@ -27,14 +27,6 @@ if user_text:
         max_total = notes['total'].max()
         moyenne = notes['total'].mean()
         percentile = (notes['total'] <= total).mean() * 100
-        ## Feedback 
-        if rang <= 3:
-                feedback = f"🔥 Bravo {nom} ! Tu es sur le podium 🥇🥈🥉 !"
-        elif rang <= 5:
-                feedback = f"⭐ Top 5 pour {nom} ! Continue !" 
-        else:
-                ecart_top5 = notes.nlargest(5,'total')['total'].iloc[-1] - total
-                feedback = f"💡 À {ecart_top5:.0f} pts du Top 5, {nom} !"
         fig = px.histogram(
                         notes, x='total', nbins=8, labels={'total':'Total Points'}, color_discrete_sequence=['#1f77b4'])
         fig.add_vline(x=total, line_dash="dash", line_color="red",
@@ -44,14 +36,9 @@ if user_text:
         top5.index = ['🥇','🥈','🥉','4️⃣','5️⃣']
         top5.columns = ['Nom','Total']
         top5_html = top5.to_html(index=True)
-        metrics = f""" Nom : {nom} \n
-                Total : {total} pts \n
-                Classement : {rang}/{len(notes)} \n
-                Progression : {total/max_total*100:.1f} % \n
-                Moyenne classe : {moyenne:.1f} pts \n
-                Percentile : {percentile:.1f} %"""
+        metrics = f"""{nom} vous avez un total de {total} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
+        Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé", metrics)
-        st.write("Feedback", feedback)
         st.write("Distribution des notes", fig)
         st.write('Top 5', top5)
 st.markdown("---")
