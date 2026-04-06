@@ -5,7 +5,7 @@ import streamlit as st
 import plotly.express as px
 
 ## titre 
-st.title("📊 Dashboard des notes")
+st.title("📊 Club IA - Faculté d'Agronomie - Tableau de bord de l'étudiant")
 
 ## upload du fichier
 notes = pd.read_excel('Notes.xlsx')
@@ -18,6 +18,7 @@ notes['total'] = pd.to_numeric(notes['total'], errors='coerce')
 notes = notes.dropna(subset=['code_etudiant', 'total'])
 
 ## Enter code 
+st.header("Connectez vous")
 user_text = st.text_input("Entrez votre code étudiant", placeholder="JOHN2025")
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
@@ -38,7 +39,7 @@ if user_text:
         top5_html = top5.to_html(index=True)
         metrics = f"""{nom} vous avez un total de {total} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
         Vous faites mieux que {percentile:.1f} % des étudiants."""
-        st.write("Résumé", metrics)
+        st.write("Résumé : ", metrics)
         st.write("Distribution des notes", fig)
         st.write('Top 5', top5)
 st.markdown("---")
