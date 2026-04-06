@@ -5,7 +5,8 @@ import streamlit as st
 import plotly.express as px
 
 ## titre 
-st.title("📊 Club IA - Faculté d'Agronomie - Tableau de bord de l'étudiant")
+st.title("📊 Club IA - Faculté d'Agronomie")
+st.subtitle("Tableau de bord de l'étudiant")
 
 ## upload du fichier
 notes = pd.read_excel('Notes.xlsx')
@@ -35,21 +36,32 @@ if user_text:
         fig.add_vline(x=note, line_dash="dash", line_color="red",
                   annotation_text=f"VOUS ({note})", annotation_position="top")
         fig.update_layout(height=300, showlegend=False)
+
+        ## Leaderboard table conception
         top5 = notes.nlargest(5,'total')[['nom','total']].copy().reset_index(drop=True)
         top5.index = ['🥇','🥈','🥉','4️⃣','5️⃣']
         top5.columns = ['nom','total']
         top5_html = top5.to_html(index=True)
+
+        ## Performance 
+        st.subheader("Vos performances")
         col1, col2, col3 = st.columns(3)
         col1.metric("Note Totale", f"{note} pts")
         col2.metric("Rang", f"{rang}e / {len(notes)}")
         col3.metric("Percentile", f"{percentile:.1f}%")
+
+        ## Summary for student 
+        st.subheader("Résumé")
         metrics = f"""{nom}, vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
         Les exercices représentent {float(contribution_exo):.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
-        st.subheader("Résumé")
         st.write(metrics)
+
+        ## Histogram for notes distributions 
         st.subheader("Distribution des notes")
         st.write(fig)
+
+        ## Leaderboard table 
         st.subheader("Leaderboard (Top 5)")
         st.write(top5)
         
