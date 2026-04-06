@@ -39,7 +39,7 @@ if user_text:
         top5.columns = ['nom','total']
         top5_html = top5.to_html(index=True)
         metrics = f"""{nom} vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
-        Les exercices représentent {contribution_exo} % de votre note (soit {exo}/{note}).
+        Les exercices représentent {contribution_exo:.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé : ", metrics)
         st.write("Distribution des notes", fig)
