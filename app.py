@@ -44,7 +44,9 @@ if user_text:
         Les exercices représentent {float(contribution_exo):.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé : ", metrics)
-        st.write("Distribution des notes", fig)
+        st.subheader("Distribution des notes")
+        st.write(fig)
+        st.subheader("Leaderboard (Top 5)")
         st.write('Top 5', top5)
         
 st.markdown("---")
