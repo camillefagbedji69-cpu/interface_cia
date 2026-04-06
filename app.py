@@ -26,7 +26,8 @@ if user_text:
         rang = (notes['total'] > total).sum() + 1
         max_total = notes['Note'].max()
         moyenne = notes['Note'].mean()
-        contribution_exo = notes['Exercice]* 100/notes['Note'] 
+        exo = notes['Exercice']
+        contribution_exo = (exo * 100) / note
         percentile = (notes['total'] <= total).mean() * 100
         fig = px.histogram(
                         notes, x='total', nbins=8, labels={'total':'Total Points'}, color_discrete_sequence=['#1f77b4'])
@@ -37,8 +38,8 @@ if user_text:
         top5.index = ['🥇','🥈','🥉','4️⃣','5️⃣']
         top5.columns = ['Nom','Total']
         top5_html = top5.to_html(index=True)
-        metrics = f"""{nom} vous avez un total de {total} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
-        Les exercices représentent {contribution_exo} % de votre note (soit {notes['Exercice'] / note}.
+        metrics = f"""{nom} vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
+        Les exercices représentent {contribution_exo} % de votre note (soit {exo}/{note}.
         Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé : ", metrics)
         st.write("Distribution des notes", fig)
