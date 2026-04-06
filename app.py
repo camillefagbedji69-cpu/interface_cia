@@ -13,9 +13,10 @@ notes = pd.read_excel('Notes.xlsx')
 ## Data cleaning 
 notes.columns = notes.columns.str.strip().str.lower()
 notes['code_etudiant'] = notes['code_etudiant'].str.strip().str.upper()
-notes['nom'] = notes['nom'].str.strip()
-notes['total'] = pd.to_numeric(notes['total'], errors='coerce')
-notes = notes.dropna(subset=['code_etudiant', 'total'])
+notes['Nom'] = notes['nom'].str.strip()
+notes['Exercice'] = pd.to_numeric(notes['Exercice'], errors = 'coerce') 
+notes['Presence'] = pd.to_numeric(notes['Presence'], errors = 'coerce') 
+notes['Note'] = pd.to_numeric(notes['Note'], errors = 'coerce')
 
 ## Enter code 
 with st.sidebar :
@@ -24,10 +25,11 @@ with st.sidebar :
 if user_text:
         etudiant = notes[notes['code_etudiant']==user_text]
         nom = etudiant['nom'].values[0]
-        total = etudiant['total'].values[0]
+        note = etudiant['Note'].values[0]
         rang = (notes['total'] > total).sum() + 1
-        max_total = notes['total'].max()
-        moyenne = notes['total'].mean()
+        max_total = notes['Note'].max()
+        moyenne = notes['Note'].mean()
+        contribution_exo = notes['Exercice]* 100/notes['Note'] 
         percentile = (notes['total'] <= total).mean() * 100
         fig = px.histogram(
                         notes, x='total', nbins=8, labels={'total':'Total Points'}, color_discrete_sequence=['#1f77b4'])
@@ -39,6 +41,7 @@ if user_text:
         top5.columns = ['Nom','Total']
         top5_html = top5.to_html(index=True)
         metrics = f"""{nom} vous avez un total de {total} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
+        Les exercices représentent {contribution_exo} % de votre note (soit {notes['Exercice'] / note}.
         Vous faites mieux que {percentile:.1f} % des étudiants."""
         st.write("Résumé : ", metrics)
         st.write("Distribution des notes", fig)
