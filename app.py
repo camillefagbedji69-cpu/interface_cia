@@ -6,7 +6,7 @@ import plotly.express as px
 
 ## titre 
 st.title("📊 Club IA - Faculté d'Agronomie")
-st.subtitle("Tableau de bord de l'étudiant")
+st.subheader("Tableau de bord de l'étudiant")
 
 ## upload du fichier
 notes = pd.read_excel('Notes.xlsx')
