@@ -39,6 +39,10 @@ if user_text:
         top5.index = ['🥇','🥈','🥉','4️⃣','5️⃣']
         top5.columns = ['nom','total']
         top5_html = top5.to_html(index=True)
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Note Totale", f"{note} pts")
+        col2.metric("Rang", f"{rang}e / {len(notes)}")
+        col3.metric("Percentile", f"{percentile:.1f}%")
         metrics = f"""{nom}, vous avez un total de {note} pts. Vous êtes {rang} ème sur {len(notes)} étudiants. 
         Les exercices représentent {float(contribution_exo):.2f} % de votre note (soit {exo}/{note}).
         Vous faites mieux que {percentile:.1f} % des étudiants."""
